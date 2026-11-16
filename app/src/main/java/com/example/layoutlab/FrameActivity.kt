@@ -1,20 +1,25 @@
 package com.example.layoutlab
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.layoutlab.databinding.ActivityFrameBinding
 
 class FrameActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFrameBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_frame)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = ActivityFrameBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnToggle.setOnClickListener {
+            binding.progress.visibility =
+                if (binding.progress.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
     }
 }

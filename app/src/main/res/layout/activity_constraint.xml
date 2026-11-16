@@ -8,14 +8,24 @@
     tools:context=".ConstraintActivity"
     android:padding="16dp">
 
+    <!-- 50% Vertical Guideline -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Logo anchored to the center guideline -->
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineCenter"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineCenter" />
+
     <EditText
         android:id="@+id/edtUser"
         android:layout_width="0dp"
@@ -26,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/imgLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
         android:id="@+id/edtPass"
         android:layout_width="0dp"
@@ -35,17 +46,30 @@
         app:layout_constraintTop_toBottomOf="@id/edtUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Log In button as the "head" of the packed chain -->
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Log In"
         app:layout_constraintTop_toBottomOf="@id/edtPass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.5"
-        app:layout_constraintHorizontal_bias="0.3" />
+        app:layout_constraintEnd_toStartOf="@+id/btnRegister"
+        app:layout_constraintHorizontal_chainStyle="packed" />
+
+    <!-- Register button completing the chain -->
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Register"
+        app:layout_constraintTop_toBottomOf="@id/edtPass"
+        app:layout_constraintStart_toEndOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/txtForgot"
         android:layout_width="wrap_content"
@@ -54,7 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
 

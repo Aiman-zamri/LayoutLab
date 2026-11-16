@@ -30,4 +30,27 @@
     </TableRow>
 
 
+    <TableRow>
+        <TextView android:text="Name" android:padding="8dp" />
+        <EditText android:hint="Enter Name" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="Email" android:padding="8dp" />
+        <EditText android:hint="Enter Email" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="Phone" android:padding="8dp" />
+        <EditText android:hint="Enter Phone" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:text="Submit"
+            android:layout_span="2"
+            android:layout_gravity="center_horizontal" />
+    </TableRow>
+
+
 </TableLayout>

@@ -13,6 +13,7 @@ class RecyclerActivity: AppCompatActivity() {
     private lateinit var binding: ActivityRecyclerBinding
     private var grid = false
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityRecyclerBinding.inflate(layoutInflater)
@@ -22,8 +23,13 @@ class RecyclerActivity: AppCompatActivity() {
             v.setPadding (bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
+
         val data = List(50) { Student("Student \${it + 1}", 50 + it) }
-        binding.recycler.adapter = StudentAdapter(data)
+        //binding.recycler.adapter = StudentAdapter(data)
+        binding.recycler.adapter = StudentAdapter(data) { student ->
+            android.widget.Toast.makeText(this, student.name, android.widget.Toast.LENGTH_SHORT).show()
+        }
+
         binding.recycler.layoutManager = LinearLayoutManager(this)
         binding.btnToggle.setOnClickListener {
             grid = !grid
